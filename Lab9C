@@ -1,0 +1,41 @@
+#include <iostream>
+#include <fstream>
+#include <algorithm>
+
+void sortArray(float arr[], int size) {
+    std::sort(arr, arr + size);
+}
+
+int main() {
+    std::ifstream unsortedFile("unsorted.dat");
+    std::ofstream sortedFile("sorted.dat");
+
+    if (!unsortedFile) {
+        std::cerr << "Unable to open unsorted.dat for reading." << std::endl;
+        return 1;
+    }
+
+    if (!sortedFile) {
+        std::cerr << "Unable to open sorted.dat for writing." << std::endl;
+        return 1;
+    }
+
+    const int MAX_SIZE = 100;
+    float numbers[MAX_SIZE];
+    int count = 0;
+
+    while (unsortedFile >> numbers[count]) {
+        count++;
+    }
+
+    sortArray(numbers, count);
+
+    for (int i = 0; i < count; ++i) {
+        sortedFile << numbers[i] << std::endl;
+    }
+
+    unsortedFile.close();
+    sortedFile.close();
+
+    return 0;
+}
