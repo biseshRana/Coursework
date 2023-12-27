@@ -1,0 +1,30 @@
+#include <cstdio>
+
+/* 
+*/
+
+int main() {
+    double sales;
+    int yearsOfExperience;
+    double bonus = 100.00;
+
+    printf("Enter the total amount of sales: ");
+    scanf("%lf", &sales);
+
+    printf("Enter the number of years of experience: ");
+    scanf("%d", &yearsOfExperience);
+
+    if (yearsOfExperience >= 10) {
+        bonus += 0.03 * sales;
+    } else {
+        bonus += 0.02 * sales;
+    }
+
+    if (sales > 100000.00) {
+        bonus += 500.00;
+    }
+
+    printf("The computed bonus is: $%.2lf\n", bonus);
+
+    return 0;
+}
