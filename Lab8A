@@ -1,0 +1,152 @@
+
+### A. Function calling another function (Lab8A.cpp)
+
+```cpp
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int getRandom() {
+    return rand() % 100 + 1; // Generate a random number between 1 and 100
+}
+
+void compare(int guess) {
+    int randomNum = getRandom();
+    cout << "Random number: " << randomNum << endl;
+    
+    if (guess > randomNum) {
+        cout << "Your guess is larger than the random number." << endl;
+    } else if (guess < randomNum) {
+        cout << "Your guess is smaller than the random number." << endl;
+    } else {
+        cout << "Your guess is equal to the random number." << endl;
+    }
+}
+
+int main() {
+    srand(time(0)); // Seed for random number generation
+    
+    int guess;
+    cout << "Enter your guess: ";
+    cin >> guess;
+    
+    compare(guess);
+    
+    return 0;
+}
+```
+
+### B. Passing arrays to function (Lab8B.cpp)
+
+```cpp
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+const int ARRAY_SIZE = 10;
+
+int getMax(const int arr[], int size) {
+    int max = arr[0];
+    for (int i = 1; i < size; ++i) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+int main() {
+    srand(time(0)); // Seed for random number generation
+    
+    int numbers[ARRAY_SIZE];
+    
+    cout << "Random numbers: ";
+    for (int i = 0; i < ARRAY_SIZE; ++i) {
+        numbers[i] = rand() % 51 + 50; // Random numbers between 50 and 100
+        cout << numbers[i] << " ";
+    }
+    cout << endl;
+    
+    cout << "Maximum value: " << getMax(numbers, ARRAY_SIZE) << endl;
+    
+    return 0;
+}
+```
+
+### C. Multiple Files
+
+1. **Lab8_Header.h**
+```cpp
+#include <iostream>
+using namespace std;
+
+const int COLS = 6;
+const int ROWS = 10;
+
+void computeMaximum(float grades[][COLS], int num, float maximum[]);
+void showArray(float array[], int size);
+```
+
+2. **computeMaximum.cpp**
+```cpp
+#include "Lab8_Header.h"
+
+void computeMaximum(float grades[][COLS], int num, float maximum[]) {
+    for (int i = 0; i < num; ++i) {
+        float max = grades[i][0];
+        for (int j = 1; j < COLS; ++j) {
+            if (grades[i][j] > max) {
+                max = grades[i][j];
+            }
+        }
+        maximum[i] = max;
+    }
+}
+```
+
+3. **showArray.cpp**
+```cpp
+#include "Lab8_Header.h"
+
+void showArray(float array[], int size) {
+    for (int i = 0; i < size; ++i) {
+        cout << array[i] << " ";
+    }
+    cout << endl;
+}
+```
+
+4. **Lab8C.cpp**
+```cpp
+#include "Lab8_Header.h"
+
+int main() {
+    float grades[ROWS][COLS];
+    float maximum[ROWS];
+    int num;
+    
+    cout << "How many students in the class? ";
+    cin >> num;
+    
+    for (int row = 0; row < num; ++row) {
+        for (int col = 0; col < COLS; ++col) {
+            cout << "Enter QUIZ #" << col+1 << " for STUDENT #" << row+1 << ": ";
+            cin >> grades[row][col];
+        }
+    }
+    
+    computeMaximum(grades, num, maximum);
+    
+    cout << "The maximum grades: ";
+    showArray(maximum, num);
+    
+    return 0;
+}
+```
+
+
+```bash
+g++ Lab8C.cpp computeMaximum.cpp showArray.cpp -o Lab8C
+```
