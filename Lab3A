@@ -1,0 +1,32 @@
+/* 
+Author: Hidar Mayyah (hidarmayyah@my.unt.edu)
+Date: 2023-09-12
+Instructor: 
+Description: This program computes the bonus earned by an employee based on their salary and a given bonus rate.
+*/
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    string name;
+    double salary, bonus;
+    int rate;
+
+    cout << "Enter the full name of the employee: ";
+    getline(cin, name);
+
+    cout << "Enter the salary of the employee: ";
+    cin >> salary;
+
+    cout << "Enter the percentage rate of bonus computation (between 5 and 15): ";
+    cin >> rate;
+
+    bonus = salary * static_cast<double>(rate) / 100;
+
+    cout << fixed << setprecision(2);
+    cout << name << " earned a bonus of " << bonus << endl;
+
+    return 0;
+}
