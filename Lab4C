@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cctype>
+
+/* 
+*/
+
+enum Season { Summer = 'S', Fall = 'F', Winter = 'W', Spring = 'G' };
+
+int main() {
+    char userInput;
+    std::cout << "Enter a character to represent the season (S for Summer, F for Fall, W for Winter, G for Spring): ";
+    std::cin >> userInput;
+
+    switch (toupper(userInput)) {
+        case Summer:
+            std::cout << "It is rather hot outside." << std::endl;
+            break;
+        case Fall:
+            std::cout << "The weather looks good." << std::endl;
+            break;
+        case Winter:
+            std::cout << "It is rather cold outside." << std::endl;
+            break;
+        case Spring:
+            std::cout << "The flowers are blooming." << std::endl;
+            break;
+        default:
+            std::cout << "Wrong choice." << std::endl;
+    }
+
+    return 0;
+}
