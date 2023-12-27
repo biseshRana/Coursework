@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+
+/* Author: [Your Name] ([Your Email])
+Date: [Date]
+Instructor: [Instructor Name]
+Description: Program to count the number of vowels and consonants in a user-entered string.
+*/
+
+int main() {
+    std::string input;
+    int vowelsCount = 0, consonantsCount = 0;
+
+    std::cout << "Enter a string: ";
+    getline(std::cin, input);
+
+    for (char c : input) {
+        char lowerC = tolower(c);
+        if (isalpha(lowerC)) {
+            if (lowerC == 'a' || lowerC == 'e' || lowerC == 'i' || lowerC == 'o' || lowerC == 'u') {
+                vowelsCount++;
+            } else {
+                consonantsCount++;
+            }
+        }
+    }
+
+    std::cout << "Number of vowels: " << vowelsCount << std::endl;
+    std::cout << "Number of consonants: " << consonantsCount << std::endl;
+
+    return 0;
+}
