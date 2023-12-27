@@ -1,0 +1,38 @@
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+
+int main() {
+    std::ifstream inFile;
+    std::ofstream outFile;
+    char inFileName[50], outFileName[50];
+
+    std::cout << "Enter the name of the input file: ";
+    std::cin >> inFileName;
+    std::cout << "Enter the name of the output file: ";
+    std::cin >> outFileName;
+
+    inFile.open(inFileName);
+    if (!inFile) {
+        std::cerr << "Unable to open input file " << inFileName << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    outFile.open(outFileName);
+    if (!outFile) {
+        std::cerr << "Unable to open output file " << outFileName << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    char c;
+    while (inFile.get(c)) {
+        if (!inFile.eof()) {
+            outFile.put(c);
+        }
+    }
+
+    inFile.close();
+    outFile.close();
+
+    return 0;
+}
