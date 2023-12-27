@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+double compute_bonus(double base_salary, int experience);
+
+int main() {
+    double base_salary;
+    int experience;
+
+    cout << "Enter base salary: ";
+    cin >> base_salary;
+    cout << "Enter years of experience: ";
+    cin >> experience;
+
+    double bonus = compute_bonus(base_salary, experience);
+    cout << "The computed bonus is: " << bonus << endl;
+
+    return 0;
+}
+
+double compute_bonus(double base_salary, int experience) {
+    double bonus;
+    if(experience > 5) {
+        bonus = 0.05 * base_salary;
+    } else {
+        bonus = 0.03 * base_salary;
+    }
+    return bonus;
+}
