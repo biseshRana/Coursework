@@ -1,0 +1,62 @@
+#include <iostream>
+#include <cmath>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+// Structure to represent a point in 3D space
+struct Point3D {
+    int x, y, z;
+    double distance;
+};
+
+// Function to calculate the distance between two points
+double calculateDistance(const Point3D& p1, const Point3D& p2) {
+    return sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2) + pow(p1.z - p2.z, 2));
+}
+
+// Function to find the point closest to the user-specified point
+Point3D findClosestPoint(const vector<Point3D>& points, const Point3D& userPoint) {
+    Point3D closest = points[0];
+    closest.distance = calculateDistance(closest, userPoint);
+
+    for (const auto& point : points) {
+        double dist = calculateDistance(point, userPoint);
+        if (dist < closest.distance) {
+            closest = point;
+            closest.distance = dist;
+        }
+    }
+    return closest;
+}
+
+int main() {
+    vector<Point3D> points;
+    Point3D temp, userPoint, closestPoint;
+
+    // Open the file
+    ifstream inFile("data.dat");
+    if (!inFile) {
+        cerr << "Error opening file." << endl;
+        return 1;
+    }
+
+    // Read the points from the file
+    while (inFile >> temp.x >> temp.y >> temp.z) {
+        points.push_back(temp);
+    }
+    inFile.close();
+
+    // Get the user point
+    cout << "Enter a three-dimensional point (x, y, z): ";
+    cin >> userPoint.x >> userPoint.y >> userPoint.z;
+
+    // Find the closest point
+    closestPoint = findClosestPoint(points, userPoint);
+
+    // Display the result
+    cout << "The closest point is (" << closestPoint.x << ", " << closestPoint.y << ", " << closestPoint.z << ") ";
+    cout << "with a distance of " << closestPoint.distance << endl;
+
+    return 0;
+}
