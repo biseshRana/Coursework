@@ -1,0 +1,29 @@
+/* 
+Author: Hidar Mayyah (hidarmayyah@my.unt.edu)
+Date: 2023-09-12
+Instructor: 
+Description:
+*/
+
+#include <cstdio>
+
+int main() {
+    char a, b;
+    int c, d;
+    double e, f;
+
+    printf("Enter two characters separated by space: ");
+    scanf(" %c %c", &a, &b);
+
+    printf("Enter two integers separated by space: ");
+    scanf("%d %d", &c, &d);
+
+    printf("Enter two doubles separated by space: ");
+    scanf("%lf %lf", &e, &f);
+
+    printf("You just entered characters: %c and %c\n", a, b);
+    printf("You just entered integers: %d and %d\n", c, d);
+    printf("You just entered doubles: %lf and %e (in scientific format)\n", e, f);
+
+    return 0;
+}
