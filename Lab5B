@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    enum Operation { Multiply = 'M', Add = 'A', Difference = 'D' };
+    int result; // result of operation
+    int num1, num2; // integers to perform operation on
+    Operation my_operation;
+    char choice;
+
+    cout << "Enter two integers: ";
+    cin >> num1 >> num2;
+
+    do {
+        cout << "Choose operation (M for Multiply, A for Add, D for Difference): ";
+        cin >> choice;
+        choice = toupper(choice); // Convert to uppercase for consistency
+
+        switch (choice) {
+            case Multiply:
+                result = num1 * num2;
+                break;
+            case Add:
+                result = num1 + num2;
+                break;
+            case Difference:
+                result = abs(num1 - num2);
+                break;
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+                continue; // Skip the rest of the loop and prompt the user again
+        }
+    } while (choice != Multiply && choice != Add && choice != Difference);
+
+    cout << "The result of the operation is " << result << endl;
+
+    return 0;
+}
