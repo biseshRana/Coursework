@@ -1,0 +1,29 @@
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+
+int main() {
+    std::ifstream dataFile("data.dat");
+    std::ofstream averageFile("average.dat");
+
+    if (!dataFile) {
+        std::cerr << "Unable to open data.dat for reading." << std::endl;
+        return 1;
+    }
+
+    if (!averageFile) {
+        std::cerr << "Unable to open average.dat for writing." << std::endl;
+        return 1;
+    }
+
+    int num1, num2, num3;
+    while (dataFile >> num1 >> num2 >> num3) {
+        double average = static_cast<double>(num1 + num2 + num3) / 3;
+        averageFile << std::fixed << std::setprecision(2) << average << std::endl;
+    }
+
+    dataFile.close();
+    averageFile.close();
+
+    return 0;
+}
