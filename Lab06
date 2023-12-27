@@ -1,0 +1,31 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+using namespace std;
+
+int main() {
+    /* Author: [Your Name] ([Your Email])
+    Date: [Date]
+    Instructor: [Instructor Name]
+    Description: This program generates 5 random ASCII values corresponding to 
+    uppercase letters and displays the respective characters.
+    */
+
+    const int SIZE = 5;
+    int arr[SIZE];
+
+    srand(time(0)); // Seed for random number generation
+
+    // Generate random integers and store in the array
+    for(int i = 0; i < SIZE; i++) {
+        arr[i] = rand() % 26 + 65; // ASCII values from 65 to 90
+    }
+
+    // Display characters
+    for(int i = 0; i < SIZE; i++) {
+        cout << static_cast<char>(arr[i]);
+    }
+    cout << endl;
+
+    return 0;
+}
