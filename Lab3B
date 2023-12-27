@@ -1,0 +1,22 @@
+/* 
+Author: Hidar Mayyah (hidarmayyah@my.unt.edu)
+Date: 2023-09-12
+Instructor: 
+Description:
+*/
+
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+using namespace std;
+
+int main() {
+    srand(time(0));
+
+    char firstNameInitial = 'A' + rand() % 26;
+    char lastNameInitial = 'A' + rand() % 26;
+
+    cout << "Randomly generated initials: " << firstNameInitial << "." << lastNameInitial << "." << endl;
+
+    return 0;
+}
