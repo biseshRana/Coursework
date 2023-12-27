@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+// Function to find the minimum value in a dynamic array
+double findMinimum(double* arr, int size) {
+    double minVal = *arr;
+    for (int i = 1; i < size; ++i) {
+        if (*(arr + i) < minVal) {
+            minVal = *(arr + i);
+        }
+    }
+    return minVal;
+}
+
+int main() {
+    int size;
+    cout << "Enter the size of the array: ";
+    cin >> size;
+
+    // Dynamically allocate the array
+    double* numlist = new double[size];
+
+    // Read in the values for the array
+    cout << "Enter " << size << " floating point numbers: ";
+    for (int i = 0; i < size; ++i) {
+        cin >> *(numlist + i);
+    }
+
+    // Find and display the minimum value
+    double minValue = findMinimum(numlist, size);
+    cout << "The minimum value in the array is: " << minValue << endl;
+
+    // Deallocate the dynamic array
+    delete[] numlist;
+
+    return 0;
+}
