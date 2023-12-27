@@ -1,0 +1,42 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+using namespace std;
+
+// Structure to represent a patient's health information
+struct Patient {
+    string name;
+    float weight;
+    int feet;
+    int inches;
+};
+
+// Function to check BMI
+bool checkBMI(const Patient& person) {
+    int totalHeight = person.feet * 12 + person.inches;
+    float bmi = (703 * person.weight) / pow(totalHeight, 2);
+
+    return (bmi >= 19.5 && bmi < 24.9);
+}
+
+int main() {
+    Patient person;
+
+    cout << "Enter the person's name: ";
+    getline(cin, person.name);
+
+    cout << "Enter the person's weight (in pounds): ";
+    cin >> person.weight;
+
+    cout << "Enter the person's height (feet inches): ";
+    cin >> person.feet >> person.inches;
+
+    if (checkBMI(person)) {
+        cout << "The BMI of " << person.name << " is within the healthy range." << endl;
+    } else {
+        cout << "The BMI of " << person.name << " is not within the healthy range." << endl;
+    }
+
+    return 0;
+}
+
