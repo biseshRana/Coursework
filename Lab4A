@@ -1,0 +1,30 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+
+/* 
+*/
+
+int main() {
+    int userInput;
+    std::cout << "Enter a number between 200 and 300, inclusive: ";
+    std::cin >> userInput;
+
+    if (userInput < 200 || userInput > 300) {
+        std::cout << "Error: The number is outside the range." << std::endl;
+    } else {
+        srand(time(0)); 
+        int randomNumber = rand() % 101 + 200; 
+        std::cout << "Randomly generated number: " << randomNumber << std::endl;
+
+        if (randomNumber == userInput) {
+            std::cout << "The generated number is equal to the entered number." << std::endl;
+        } else if (randomNumber > userInput) {
+            std::cout << "The generated number is greater than the entered number." << std::endl;
+        } else {
+            std::cout << "The generated number is less than the entered number." << std::endl;
+        }
+    }
+
+    return 0;
+}
