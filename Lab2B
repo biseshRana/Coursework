@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int var1;
+    char var2;
+    float var3, var4;
+
+    var1 = 40;
+    var2 = 'H';  
+    var3 = 4.6;
+    var4 = var1 * var3;  
+
+    cout << "Result of var4: " << var4 << endl;
+    return 0;
+}
