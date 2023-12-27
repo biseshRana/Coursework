@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+
+/* 
+*/
+
+int main() {
+    std::string mainString, searchString;
+    std::cout << "Enter string: ";
+    std::getline(std::cin, mainString);
+
+    std::cout << "Enter search string: ";
+    std::getline(std::cin, searchString);
+
+    size_t found = mainString.find(searchString);
+    if (found != std::string::npos) {
+        std::cout << "Search string exists at " << found << std::endl;
+    } else {
+        std::cout << "Search string does not exist." << std::endl;
+    }
+
+    return 0;
+}
