@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int SIZE = 12;
+    int height[SIZE], above_average[SIZE];
+    int sum_height = 0;
+    double average;
+    int above_avg_count = 0;
+
+    for(int i = 0; i < SIZE; i++) {
+        cout << "Enter height in inches of student #" << i+1 << ": ";
+        cin >> height[i];
+        sum_height += height[i];
+    }
+
+    average = static_cast<double>(sum_height) / SIZE;
+
+    for(int i = 0; i < SIZE; i++) {
+        if(height[i] > average) {
+            above_average[above_avg_count] = height[i];
+            above_avg_count++;
+        }
+    }
+
+    cout << "Average height: " << average << " inches" << endl;
+    cout << "Heights above average: ";
+    for(int i = 0; i < above_avg_count; i++) {
+        cout << above_average[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
