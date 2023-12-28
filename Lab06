@@ -4,12 +4,7 @@
 using namespace std;
 
 int main() {
-    /* Author: [Your Name] ([Your Email])
-    Date: [Date]
-    Instructor: [Instructor Name]
-    Description: This program generates 5 random ASCII values corresponding to 
-    uppercase letters and displays the respective characters.
-    */
+
 
     const int SIZE = 5;
     int arr[SIZE];
